@@ -20,11 +20,11 @@ import kotlinx.coroutines.flow.collectLatest
  * @author Giuseppe Sorce
  */
 @Composable
-fun  Login(navController: NavHostController) {
+fun  Login(viewModel: LoginViewModel): Unit {
 
     Log.i("navigation","Login" )
 
-    val viewModel = hiltViewModel<LoginViewModel>()
+   // val viewModel = hiltViewModel<LoginViewModel>()
 
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         Text(text = "Login", fontSize = 27.sp)
@@ -46,12 +46,12 @@ fun  Login(navController: NavHostController) {
         }
     }
 
-    LaunchedEffect(Unit) {
-
-        viewModel.navigationState.collectLatest {
-            navController.navigate(it.path)
-        }
-
-    }
+//    LaunchedEffect(Unit) {
+//
+//        viewModel.navigationState.collectLatest {
+//            navController.navigate(it.path)
+//        }
+//
+//    }
 
 }
