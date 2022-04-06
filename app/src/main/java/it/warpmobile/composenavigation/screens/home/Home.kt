@@ -19,9 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
  * @author Giuseppe Sorce
  */
 @Composable
-fun Home(navController: NavHostController) {
-
-    val viewModel = hiltViewModel<HomeViewModel>()
+fun Home(viewModel: HomeViewModel) {
 
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         Text(text = "HOME", fontSize = 27.sp)
@@ -40,11 +38,4 @@ fun Home(navController: NavHostController) {
             Text(text = "GOTO SETTINGS")
         }
     }
-
-    LaunchedEffect(Unit) {
-        viewModel.navigationState.collectLatest {
-            navController.navigate(it.path)
-        }
-    }
-
 }

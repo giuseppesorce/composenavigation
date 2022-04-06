@@ -14,7 +14,6 @@ import javax.inject.Inject
 @HiltViewModel
 open class BaseViewModel @Inject constructor() : ViewModel() {
 
-
     protected val _navigationState: MutableSharedFlow<Destination> = MutableSharedFlow()
     val navigationState: SharedFlow<Destination> = _navigationState
 

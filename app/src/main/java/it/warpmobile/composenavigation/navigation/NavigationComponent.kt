@@ -9,18 +9,19 @@ import androidx.navigation.compose.composable
 import it.warpmobile.composenavigation.navigation.routing.Destination
 import it.warpmobile.composenavigation.screens.BaseScreen
 import it.warpmobile.composenavigation.screens.detail.Detail
+import it.warpmobile.composenavigation.screens.detail.DetailViewModel
 import it.warpmobile.composenavigation.screens.home.Home
+import it.warpmobile.composenavigation.screens.home.HomeViewModel
 import it.warpmobile.composenavigation.screens.login.Login
 import it.warpmobile.composenavigation.screens.login.LoginViewModel
 import it.warpmobile.composenavigation.screens.settings.Settings
+import it.warpmobile.composenavigation.screens.settings.SettingsViewModel
 import it.warpmobile.composenavigation.screens.signup.Signup
+import it.warpmobile.composenavigation.screens.signup.SignupViewModel
 
 @Composable
 fun NavigationComponent(navController: NavHostController) {
-    NavHost(
-        navController = navController,
-        startDestination = Destination.Login.path
-    ) {
+    NavHost(navController = navController, startDestination = Destination.Login.path) {
         composable(Destination.Login.path) {
             val viewModel = viewModel<LoginViewModel>()
             BaseScreen(navController, viewModel){
@@ -28,20 +29,31 @@ fun NavigationComponent(navController: NavHostController) {
             }
         }
 
-
-
         composable(Destination.Signup.path) {
+            val viewModel = viewModel<SignupViewModel>()
+            BaseScreen(navController, viewModel){
+                Signup(viewModel)
+            }
 
-            Signup(navController)
         }
         composable(Destination.Home.path){
-            Home(navController)
+            val viewModel = viewModel<HomeViewModel>()
+            BaseScreen(navController, viewModel){
+                Home(viewModel)
+            }
         }
         composable(Destination.Settings.path){
-            Settings(navController)
+            val viewModel = viewModel<SettingsViewModel>()
+            BaseScreen(navController, viewModel){
+                Settings(viewModel)
+            }
+
         }
         composable(Destination.Detail.path){
-            Detail(navController)
+            val viewModel = viewModel<DetailViewModel>()
+            BaseScreen(navController, viewModel){
+                Detail(viewModel)
+            }
         }
     }
 }

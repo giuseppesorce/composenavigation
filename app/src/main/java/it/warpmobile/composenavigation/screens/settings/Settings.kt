@@ -19,8 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
  * @author Giuseppe Sorce
  */
 @Composable
-fun Settings(navController: NavHostController) {
-    val viewModel = hiltViewModel<SettingsViewModel>()
+fun Settings(viewModel: SettingsViewModel) {
 
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         Text(text = "SETTINGS", fontSize = 27.sp)
@@ -39,13 +38,6 @@ fun Settings(navController: NavHostController) {
         }) {
             Text(text = "GOTO LOGIN")
 
-        }
-    }
-
-    LaunchedEffect(Unit) {
-
-        viewModel.navigationState.collectLatest {
-            navController.navigate(it.path)
         }
     }
 }

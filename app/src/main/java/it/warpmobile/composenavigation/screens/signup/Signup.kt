@@ -19,8 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
  * @author Giuseppe Sorce
  */
 @Composable
-fun Signup(navController: NavHostController) {
-    val viewModel = hiltViewModel<SignupViewModel>()
+fun Signup(viewModel: SignupViewModel) {
 
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         Text(text = "SIGNUP", fontSize = 27.sp)
@@ -38,14 +37,6 @@ fun Signup(navController: NavHostController) {
 
         }) {
             Text(text = "GOTO LOGIN")
-
-        }
-    }
-
-    LaunchedEffect(Unit) {
-
-        viewModel.navigationState.collectLatest {
-            navController.navigate(it.path)
         }
     }
 }
