@@ -14,12 +14,23 @@ import javax.inject.Inject
 @HiltViewModel
 open class BaseViewModel @Inject constructor() : ViewModel() {
 
-    protected val _navigationState: MutableSharedFlow<Destination> = MutableSharedFlow()
+    private val _navigationState: MutableSharedFlow<Destination> = MutableSharedFlow()
     val navigationState: SharedFlow<Destination> = _navigationState
 
-     fun gotoScreen(destination: Destination) {
+    private val _navigationBack: MutableSharedFlow<Boolean> = MutableSharedFlow()
+    val navigationBack: SharedFlow<Boolean> = _navigationBack
+
+
+
+    fun gotoScreen(destination: Destination) {
         viewModelScope.launch {
             _navigationState.emit(destination)
+        }
+    }
+
+    fun goBack(){
+        viewModelScope.launch {
+            _navigationBack.emit(true)
         }
     }
 }

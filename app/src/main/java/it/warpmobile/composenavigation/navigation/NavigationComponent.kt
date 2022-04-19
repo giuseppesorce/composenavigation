@@ -23,7 +23,10 @@ import it.warpmobile.composenavigation.screens.signup.SignupViewModel
 fun NavigationComponent(navController: NavHostController) {
     NavHost(navController = navController, startDestination = Destination.Login.path) {
         composable(Destination.Login.path) {
+
             val viewModel = viewModel<LoginViewModel>()
+
+
             BaseScreen(navController, viewModel){
                 Login(viewModel)
             }

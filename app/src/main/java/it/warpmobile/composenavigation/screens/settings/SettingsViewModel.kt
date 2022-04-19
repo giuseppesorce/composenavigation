@@ -1,5 +1,6 @@
 package it.warpmobile.composenavigation.screens.settings
 
+import android.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import it.warpmobile.composenavigation.base.BaseViewModel
 import it.warpmobile.composenavigation.base.NavigationEvents
@@ -19,5 +20,9 @@ class SettingsViewModel @Inject constructor() : BaseViewModel() {
                 gotoScreen(Destination.Login)
             }
         }
+    }
+
+    fun fetchProducts() {
+        Log.i("navigation", "fetchProducts" )
     }
 }

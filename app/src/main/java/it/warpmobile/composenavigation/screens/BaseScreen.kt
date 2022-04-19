@@ -22,4 +22,13 @@ fun BaseScreen(
         }
     }
 
+    LaunchedEffect(Unit) {
+        viewModel.navigationBack.collectLatest {toback->
+            if(toback){
+                navController.popBackStack()
+            }
+        }
+    }
+
+
 }
